@@ -1,0 +1,15 @@
+scp /home/jenkins/scripts.zip jenkins@10.0.10.11:/home/jenkins/
+
+ssh jenkins@10.0.10.11 << _EOF_
+declare -a array=()
+mkdir scripts
+unzip -o /home/jenkins/scripts.zip -d /home/jenkins/scripts/
+#cd ./scripts/
+for i in ~/scripts/*; do \$i; done
+#for file in .; do array=(\$(ls -l | cut -d' ' -f10)); done
+#for file in "\${array[@]}"; do bash \${file}; done
+cd 
+rm scripts.zip
+rm -r scripts
+_EOF_
+
