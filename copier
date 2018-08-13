@@ -1,0 +1,18 @@
+#!/bin/bash
+
+make zipper
+
+scp /home/jenkins/wrapup/pythons.zip jenkins@10.0.10.11:/home/jenkins/
+
+ssh jenkins@10.0.10.11 << _EOF_
+
+mkdir pythons
+unzip -o /home/jenkins/pythons.zip -d /home/jenkins/pythons/
+cd ./pythons/
+
+python add.py
+
+echo "SUCCESS!"
+
+_EOF_
+
