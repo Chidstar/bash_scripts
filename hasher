@@ -1,0 +1,19 @@
+#!/bin/bash
+
+hash=$(echo 'hello' -m | md5sum)
+echo $hash
+
+#echo "Enter password: "
+read pass
+passwrd=$(echo "$pass" -m | md5sum)
+#echo $passwrd
+
+if [[ $passwrd == $hash ]]
+then
+	echo Correct password!
+else
+	echo Inocrrect password!
+fi
+
+
+

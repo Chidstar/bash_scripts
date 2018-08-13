@@ -1,0 +1,28 @@
+#!/bin/bash
+echo Enter a password:
+read pass
+
+hash=$(echo -m "$pass" | md5sum)
+
+for i in {a..z}
+do
+	for j in {a..z}
+	do
+		for k in {a..z}
+		do
+			for l in {a..z}
+			do
+				passwrd=$(echo -m "$i$j$k$l" | md5sum)
+#				echo "Pass is : $hash"
+#				echo "check is : $passwrd"
+				if [[ $passwrd == $hash ]]
+				then
+					echo "Password is $i$j$k$l!"
+#					echo "Time taken: "
+#					printf '%f\n' "$SECONDS"
+					exit
+				fi
+			done
+		done
+	done
+done

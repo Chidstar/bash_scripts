@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "List of processes:"
+netstat -tulpn
+
+echo Please enter port number of process to kill:
+read num
+
+kill $num
+
+echo Process killed!

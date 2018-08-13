@@ -1,0 +1,16 @@
+for i in $(tail /etc/hosts -n +3 | cut -d' ' -f3);
+
+do
+	scp /home/jenkins/scripts.zip jenkins@$i:/home/jenkins/
+	ssh jenkins@$i << _EOF_ 
+    mkdir scripts
+    unzip -o /home/jenkins/scripts.zip -d /home/jenkins/scripts/
+	for i in ~/scripts/*; do \$i; done
+	cd 
+	rm scripts.zip
+	rm -r scripts
+
+_EOF_
+    
+done
+

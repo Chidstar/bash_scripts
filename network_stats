@@ -1,0 +1,19 @@
+#! /bin/bash
+
+echo Host name:
+hostname
+
+echo IP addresses:
+ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo 
+'([0-9*\.){3}[0-9]*' | grep -v '127.0.0.1'
+hostname -i
+
+echo ''
+echo Network controllers:
+sudo lshw -class network
+
+echo ''
+ping -c 5 192.168.1.178
+
+echo "192.168.1.178 will" >> /etc/hosts
+echo Hosts file appended!
