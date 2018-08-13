@@ -1,6 +1,7 @@
 .PHONY = test1, test2, add, commit, push
 test_var = "hello"
-comment_var = ""
+comment_var = "updates"
+branch = "master"
 
 test1:
 	@echo "test1 ${test_var}"
@@ -19,5 +20,5 @@ commit: add
 	@git commit -m "${comment_var}"
 
 push: add commit
-	@git push origin master
+	@git push origin ${branch}
 
