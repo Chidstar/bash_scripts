@@ -7,6 +7,6 @@ zipcopy:
 ssher: zipcopy
 	@ssh jenkins@10.0.10.11 'rm -rf pythons; mkdir pythons;\
 	unzip -o /home/jenkins/pythons.zip -d /home/jenkins/pythons/;\
-	cd pythons; python add.py'
+	cd pythons; python add.py >> results.txt'
 
 	
