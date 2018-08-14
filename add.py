@@ -1,9 +1,14 @@
 import time
 from addfunc import add
-a = 6
-b = 1
+
+a = 1
+b = 10
 
 while True:
-  print ("The result is = ", add(a,b))
-  a += 3
-  b += 2
+	f = open("results.txt", "a+")
+	result = add(a,b)
+	f.write(str(result))
+	print("Result is = ", result)
+	a += 3
+	b += 4
+	time.sleep(5)
