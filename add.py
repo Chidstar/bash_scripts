@@ -1,8 +1,9 @@
 import time
 from addfunc import add
-
+a = 3
+ b = 7
 while True:
-  a = 3
-  b = 7
   print ("The result is = ", add(a,b))
-  print("Done!")
+  a += 3
+  b += 2
+  time.sleep(5)
