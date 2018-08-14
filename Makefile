@@ -1,4 +1,4 @@
-.PHONY = copy, ssher
+.PHONY = zipcopy, ssher
 
 zipcopy: 
 	zip pythons.zip *.py Makefile
@@ -7,6 +7,7 @@ zipcopy:
 ssher: zipcopy
 	ssh jenkins@10.0.10.11 'rm -rf pythons; mkdir pythons;\
 	unzip -o /home/jenkins/pythons.zip -d /home/jenkins/pythons/;\
-	cd ./pythons/; python add.py'
+	kill $(ps -aef | grep "python add.py" | awk '{print $2}');\
+	cd pythons; python add.py'
 
 	
